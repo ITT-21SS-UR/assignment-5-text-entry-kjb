@@ -1,0 +1,62 @@
+1)
+
+Mingrui Ray Zhang and Shumin Zhai. 2021. PhraseFlow: Designs and Empirical
+Studies of Phrase-Level Input. In Proceedings of the 2021 CHI Conference on
+Human Factors in Computing Systems (CHI '21). Association for Computing
+Machinery, New York, NY, USA, Article 197, 1–13.
+DOI:https://doi.org/10.1145/3411764.3445166
+
+The Authors implemented a phrase-level input keyboard that is able to help correct previous text based 
+on subsequently input sequences, the "PhraseFlow"-Keyboard. Through the research on phrase level typing based
+on multiple versions of the prototype, they validated different results. Phrase-level decoding has higher
+accuracy on correction tasks than word-level decoding, including space-related errors. Furthermore the 
+prototype was enhanced by creating visual feedback effects and interaction methods which have reduced the 
+cognitive load of phrase level input. Through development and in-lab studies, the authors identified 
+behaviour and cognitive patterns while using the prototype, resulting in 19% fewer errors with no effects 
+on the speed. It demonstrated the practicability of the phrase-level decoding in real typing settings. 
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><
+
+2)
+
+Ramin Hedeshy, Chandan Kumar, Raphael Menges, Steffen Staab. 
+Hummer: Text Entry by Gaze and Hum. 2021. CHI '21: Proceedings 
+of the 2021 CHI Conference on Human Factors in Computing Systems. 
+Association for Computing Machinery, New York, NY, USA, May 2021 
+Article No.: 741 Pages 1–11
+https://doi.org/10.1145/3411764.3445501
+
+The authors implemented "Hummer", a novel bi-modal method for hands-free text entry combining eye-tracking
+and humming. By analysing gaze paths that are temporally constrained by humming, they reviews related
+literature to converge to word-level text entry. They designed to different models. The first one "HumHum"
+requires short hums , the second one "Hummer" continuous humming to define the start and the end of a word.
+They also compared it to a gaze-only method "EyeSwipe" in both quantitive and qualitive measures.
+The results are "Hummer" provided a signficantly faster text-entry speed than the gaze-based hands-free
+method "EyeSwipe", with a speed of 20.45 words per minute. Furthermore the feedback indicates a clear
+preference for Hummer as a comfortable, fast and easy to learn method for text entry. The participants
+enjoyed the combination of humming and swiping in a ryhthm. 
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><
+
+3)
+
+Ville Mäkelä, Johannes Kleine, Maxine Hood, Florian Alt and Albrecht Schmidt. 
+Hidden Interaction Techniques: Concealed Information Acquisition and Texting 
+on Smartphones and Wearables. CHI '21: Proceedings of the 2021 CHI Conference 
+on Human Factors in Computing Systems. Association for Computing Machinery, 
+New York, NY, USA, May 2021 Article No.: 248 Pages 1–14
+https://doi.org/10.1145/3411764.3445504
+
+In this paper, the authors explored the concept of hidden interaction techniques through two 
+prototype applications: "HiddenHaptics" is is an app which allows the user to receive informations 
+through vibrotactile cues on the smartphone and "HideWrite" provides the user possibility to write 
+text messages by drawing on their dimmed smartwatch screen. To investigate if the applications
+can be used without being expoesed, the authors conducted three different user studies.
+The design goals for the two applications were that they are easy to lern, they work on off-the-
+shelf devices without external hardware, they do not give visual output and the user do not look
+at the device during interaction. The results of the study where that the user could effectively 
+hide their interaction using the hidden techniques, with "HandWrite" only 1 of the 11 observers
+noticed the interaction, with "HiddenHaptics" 93,3% were successful. The User tended to hide the 
+device by holding it behind their backs, keeping it in their pockets or by using objects like the 
+table. The last finding was that the user could still commit to the ongoing social activities despite
+their interaction with the applications.  
