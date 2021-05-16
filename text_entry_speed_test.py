@@ -5,7 +5,10 @@ import sys
 import csv
 from PyQt5 import QtGui, QtCore, QtWidgets
 from PyQt5.QtWidgets import QVBoxLayout
+import json
 import re
+
+from text_input_technique import AutoCompleter 
 
 """
 Work distribution was as follows:
@@ -13,14 +16,23 @@ logic for logging and parsing arguments by kay brinkmann, event logic and ui by 
 general script structure by both
 """
 
+"""
+setup.json
+{
+  "USE_COMPLETER": "yes"
+}
+
+"""
+
 class TypingModel(object):
 
-    def __init__(self, sentences, user_id):
+    def __init__(self, sentences, user_id, use_completer):
         self.timer = QtCore.QTime()
         self.user_id = user_id
         self.sentences = sentences
         self.sentence_number = 1
         self.sentence = ""
+        self.use_completer = use_completer
         self.current_sentence = sentences[0]
         self.words = sentences[0].split()
         self.word = ""
@@ -29,6 +41,24 @@ class TypingModel(object):
         self.wordFinished = False
         self.word_times = []
         self.log_writer = csv.writer(sys.stdout)
+        self.__edit_text = AutoCompleter(self)
+        self.__setup_completer()
+
+    def __setup_completer(self):
+        if self.use_completer:
+            completer = QtWidgets.QCompleter(self.get_word_list(), self)
+            completer.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
+            completer.setWrapAround(False)
+            #self.__edit_text.set_completer(completer)
+
+    def get_word_list(self):
+        words_list = [] 
+        for i in range(len(self.sentences)):
+            words_list += self.sentences[i].replace(" ", "\n").split("\n")
+        while '' in words_list:
+            words_list.remove('')
+        return words_list
+
 
     def setSentence(self):
         if self.sentence_number < len(self.sentences):
@@ -135,10 +165,10 @@ class TypingTest(QtWidgets.QWidget):
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
-    if len(sys.argv) < 3:
+    if len(sys.argv) < 4:
         sys.stderr.write("you need to pass a textfile and the user id")
         sys.exit(1)
-    model = TypingModel(parsedata(sys.argv[1]), sys.argv[2])
+    model = TypingModel(parsedata(sys.argv[1]), sys.argv[2], parseconfig(sys.argv[3]))
     typing_test = TypingTest(model)
     sys.exit(app.exec_())
 
@@ -154,6 +184,14 @@ def parsedata(filename):
         sentences.append(line)
     return sentences
 
+def parseconfig(file):
+    with open(str(file)) as f:
+        setup_dict = json.load(f)
+    if setup_dict["USE_COMPLETER"] == "yes":
+        use_completer = True
+    else:
+        use_completer = False
+    return use_completer
 
 if __name__ == '__main__':
     main()
