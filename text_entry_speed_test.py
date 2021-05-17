@@ -41,23 +41,6 @@ class TypingModel(object):
         self.wordFinished = False
         self.word_times = []
         self.log_writer = csv.writer(sys.stdout)
-        self.__edit_text = AutoCompleter(self)
-        self.__setup_completer()
-
-    def __setup_completer(self):
-        if self.use_completer:
-            completer = QtWidgets.QCompleter(self.get_word_list(), self)
-            completer.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
-            completer.setWrapAround(False)
-            #self.__edit_text.set_completer(completer)
-
-    def get_word_list(self):
-        words_list = [] 
-        for i in range(len(self.sentences)):
-            words_list += self.sentences[i].replace(" ", "\n").split("\n")
-        while '' in words_list:
-            words_list.remove('')
-        return words_list
 
 
     def setSentence(self):
@@ -103,6 +86,24 @@ class TypingTest(QtWidgets.QWidget):
         super(TypingTest, self).__init__()
         self.model = model
         self.initUI()
+        self.__edit_text = AutoCompleter(model)
+        self.__setup_completer()
+
+    def __setup_completer(self):
+        if self.model.use_completer:
+            #wordList = ['Hallo', 'was', 'geht?', 'Noch', 'ein', 'Satz', 'zum', 'lesen.', 'Der', 'letzte', 'Satz', 'für', 'heute.']
+            completer = QtWidgets.QCompleter(self.get_word_list(), self)
+            completer.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
+            completer.setWrapAround(False)
+            self.__edit_text.set_completer(completer)
+
+    def get_word_list(self):
+        words_list = [] 
+        for i in range(len(self.model.sentences)):
+            words_list += self.model.sentences[i].replace(" ", "\n").split("\n")
+        while '' in words_list:
+            words_list.remove('')
+        return words_list
 
     def initUI(self):
         self.setGeometry(0, 0, 400, 400)
