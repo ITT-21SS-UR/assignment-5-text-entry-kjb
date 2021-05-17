@@ -26,7 +26,7 @@ setup.json
 
 class TypingModel(object):
 
-    def __init__(self, sentences, user_id, use_completer):
+    def __init__(self, user_id, sentences, use_completer):
         self.timer = QtCore.QTime()
         self.user_id = user_id
         self.sentences = sentences
@@ -166,33 +166,36 @@ class TypingTest(QtWidgets.QWidget):
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
-    if len(sys.argv) < 4:
-        sys.stderr.write("you need to pass a textfile and the user id")
+    if len(sys.argv) < 1:
+        sys.stderr.write("you need to pass a setup file")
         sys.exit(1)
-    model = TypingModel(parsedata(sys.argv[1]), sys.argv[2], parseconfig(sys.argv[3]))
-    typing_test = TypingTest(model)
-    sys.exit(app.exec_())
+    model = TypingModel(*parse_config(sys.argv[1]))
+    typingtest = TypingTest(model)
+    sys.exit(app.exec())
 
 
-def parsedata(filename):
+
+def file_to_list(filename):
     sentences = []
     try:
         file = open(filename).readlines()
     except IOError:
-        sys.stdout.write("Error: File does not appear to exist. Useddefault text instead")
+        sys.stdout.write("Error: File does not appear to exist. Used default text instead")
         return ["This is default text.", "It can be used for testing."]
     for line in file:
         sentences.append(line)
     return sentences
 
-def parseconfig(file):
+def parse_config(file):
     with open(str(file)) as f:
         setup_dict = json.load(f)
+    sentences = file_to_list(setup_dict["TEXT_FILE"])
+    user_id = setup_dict["USER_ID"]
     if setup_dict["USE_COMPLETER"] == "yes":
         use_completer = True
     else:
         use_completer = False
-    return use_completer
+    return user_id, sentences, use_completer
 
 if __name__ == '__main__':
     main()
