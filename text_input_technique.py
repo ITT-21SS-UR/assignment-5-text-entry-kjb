@@ -121,10 +121,8 @@ class TextEdit(QtWidgets.QTextEdit):
                 # Let the completer do default behavior.
                 return
 
-        isShortcut = ((event.modifiers() & QtCore.Qt.ControlModifier) != 0 and event.key() == QtCore.Qt.Key_Minus)
-        if self.__completer is None or not isShortcut:
-            # Do not process the shortcut when we have a completer.
-            super(TextEdit, self).keyPressEvent(event)
+        
+        super(TextEdit, self).keyPressEvent(event)
 
         ctrlOrShift = event.modifiers() & (QtCore.Qt.ControlModifier | QtCore.Qt.ShiftModifier)
         if self.__completer is None or (ctrlOrShift and len(event.text()) == 0):
@@ -135,7 +133,7 @@ class TextEdit(QtWidgets.QTextEdit):
         completionPrefix = self.textUnderCursor()
 
         # changed minimum character count to 2
-        if not isShortcut and (hasModifier or len(event.text()) == 0 or
+        if (hasModifier or len(event.text()) == 0 or
                                len(completionPrefix) < 2 or event.text()[-1] in eow):
             self.__completer.popup().hide()
             return
