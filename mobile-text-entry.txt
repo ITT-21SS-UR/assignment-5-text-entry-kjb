@@ -1,0 +1,15 @@
+Das Paper "Text Entry for Mobile Computing:Models and Methods, Theory and Practice " beschäftigt sich sich mit der Text-Eingabe für mobile Handheld Geräte.
+Ziel des Papers ist es, den momentanen technischen Stand der mobilen Text-Eingaben und insbesondere auch die möglichen Formen der ervaluationen für diese
+darzulegen und zu bewerten. Sein aufbau lässt sich in vier Teile Gliedern. Im ersten Teil wird kurz die historie mobiler handheld devices wiedergegeben, 
+anmgefangen mit den ersten PDAs anfang der 90er bis zum "Crosspad", welches handschriftliche Eingaben liest. Zusätzlich werden die Stift- und tastatur-Basierten
+Methoden der text eingabe kurz miteinander verglichen da sie von den Autoren als die zwei konkurrierenden Methoden angesehen werden. Als wichtigste Eigenchaften
+für mobile text-Eingabe stellen sie heraus, von maschinen lesbare Eingaben in einer für die Nutzer annehmbaren Zeit erstellt werden müssen.
+Der zweite Teil bschäftigt sich damit, wie neue Text-EIngabe Methoden evaluiert werden sollten. Eine wichtige Unterscheidung ist es demnach, ob der text von den 
+testern selbst erstellt wird, oder sie diesen abschreiben. Obwohl ersterer näher an einer reelen Situation ist, sollte im normallfall die zweite methode präferiert
+werden, da weniger störvariablen beachtet werden müssen. Zusätzlich muss unterschieden werden, ob laien oder experten performanz getestet werden soll, sowie ob
+es sich um eine Quantitative oder qualitative Analyse handelt. Als die zwei primären evaluations metriken werden die geschwindigkeit und richtigkeit des texts
+herausgestellt.
+Der dritte Teil bschäftigt sich mit den beiden populären Methoden den mobilen Text-Input zu optimieren, der bewegungsminimierung und Sprachprognose. Ersteres
+versucht die nötige bewegung für Eingaben zu minimieren, während zweiteres darauf abzielt die nächsten EIngaben des Nutzers vorherzusagen. 
+Das vierte und letzte Kapitel gibt einen überblick über bisherige EIngaben techniken aufgeteilt in die beiden haupt paradigmen welche im ersten Teil
+herausgestellt wurden.
