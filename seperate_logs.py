@@ -2,7 +2,7 @@ import pandas as pd
 import os
 
 
-df = pd.read_csv("log1.csv", header=None, names=range(8))
+df = pd.read_csv("log1.csv", header=None, names=range(9))
 df_events = df[df[0] == "event_log"]
 df_stats = df[df[0]=="stats_log"]
 print(df_events.head())
