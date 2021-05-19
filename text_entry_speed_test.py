@@ -52,7 +52,8 @@ class TypingModel(object):
         self.word_times = []
         self.log_writer = csv.writer(sys.stdout)
 
-    # sets sentence and updates sentence number
+    # sets sentence and updates sentence number, also resets word times so times from previous sentences do not get
+    # carried over
     def setSentence(self):
         if self.sentence_number < len(self.sentences):
             self.statsLog()
@@ -61,6 +62,10 @@ class TypingModel(object):
             self.words = self.sentences[self.sentence_number].split()
             # sys.stdout.write(self.current_sentence)
             self.sentence_number += 1
+            self.testStarted = False
+            self.word_times = []
+
+
         else:
             self.statsLog()
             self.eventLog("test finished", "")
@@ -74,7 +79,7 @@ class TypingModel(object):
         presented_characters = len(presented_text)
         transcribed_characters = len(transcribed_text)
         wpm = self.wordsPerMinute(transcribed_text, time)
-        self.log_writer.writerow(["stats_log", self.user_id, presented_text, transcribed_text,
+        self.log_writer.writerow(["stats_log", self.user_id, self.use_completer, presented_text, transcribed_text,
                                   presented_characters, transcribed_characters, time/1000, wpm])
 
     # for logging event data (i.e. key presses), used www.cse.yorku.ca/~stevenc/tema/ for overall structure
@@ -89,6 +94,8 @@ class TypingModel(object):
     # calculates words per minute
     def wordsPerMinute(self, text, time):
         words = text.split()
+        if len(words) <= 0:
+            return float(0)
         word_length = (len(words) - 1 + sum(len(word) for word in words)) / len(words)
         if word_length == 0:
             wpm = float(0)
