@@ -1,6 +1,6 @@
 {
   "USER_ID": 1,
-  "TEXT_FILE": "test.txt",
+  "TEXT_FILE": "sentences.txt",
   "WORDS_FILE": "words.txt",
   "USE_COMPLETER": "yes"
 }
